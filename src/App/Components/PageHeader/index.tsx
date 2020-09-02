@@ -29,6 +29,10 @@ const PageHeader: React.FC<PageHeaderProps> = ({title, description}) => {
         >
           Sair
         </ButtonLink>
+
+        <p>
+          Olá, {localStorage.getItem('app-token')}
+        </p>
       </Header>
 
       <Content>
