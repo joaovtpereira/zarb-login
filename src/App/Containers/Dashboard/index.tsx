@@ -9,46 +9,26 @@ import {
 import PageHeader from '../../Components/PageHeader';
 import CardProduct from '../../Components/CardProduct';
 
+import productsJson from '../../Util/products.json';
+
 function Dashboard() {
   return (
     <Container>
       <PageHeader title="Estes são os produtos disponíveis" />
       <CardWrapper>
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
-
-        <CardItem>
-          <CardProduct />
-        </CardItem>
+        {
+          productsJson.products.map((product) => {
+            return (
+              <CardItem key={product.id}>
+                <CardProduct 
+                  title={product.name}
+                  description={product.description}
+                  image={product.image}
+                />
+              </CardItem>
+            );
+          })
+        }
       </CardWrapper>
     </Container>
   );

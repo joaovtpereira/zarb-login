@@ -8,6 +8,12 @@ import Typography from '@material-ui/core/Typography';
 
 import { makeStyles } from '@material-ui/core/styles';
 
+interface PageHeaderProps {
+  title: string;
+  description: string;
+  image: string;
+}
+
 const useStyles = makeStyles({
   root: {
     maxWidth: 345,
@@ -18,10 +24,13 @@ const useStyles = makeStyles({
   },
   color: {
     color: '#FFFFFF',
+  },
+  height: {
+    height: 132,
   }
 });
 
-function CardProduct() {
+const CardProduct: React.FC<PageHeaderProps> = ({title, description, image}) => {
   const classes = useStyles();
 
   return (
@@ -29,18 +38,18 @@ function CardProduct() {
       <CardActionArea>
         <CardMedia
           className={classes.media}
-          image="https://scstylecaster.files.wordpress.com/2018/11/old-school-products.jpg"
+          image={image}
           title="Contemplative Reptile"
         />
 
-        <CardContent>
+        <CardContent className={classes.height}>
           <Typography 
             gutterBottom 
             variant="h5" 
             component="h2" 
             className={classes.color}
           >
-            Lizard
+            {title}
           </Typography>
 
           <Typography
@@ -49,8 +58,7 @@ function CardProduct() {
             component="p"
             className={classes.color}
           >
-           Lizards are a widespread group of squamate reptiles, with over 6,000 species, ranging
-            across all continents except Antarctica
+           {description}
           </Typography>
         </CardContent>
 
