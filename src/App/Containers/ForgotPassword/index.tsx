@@ -1,9 +1,12 @@
 import React, { useState } from 'react';
+
+import { Link } from 'react-router-dom';
 import { useHistory } from 'react-router-dom';
 
 import {
   Container,
   Wrapper,
+  ArrowBackWrapper,
   HeaderWrapper,
   InputWrapper,
   ButtonWrapper,
@@ -14,6 +17,7 @@ import api from '../../Services/api';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button';
 
+import backIcon from '../../Images/back.svg';
 
 function ForgotPassword() {
   const history = useHistory();
@@ -31,11 +35,18 @@ function ForgotPassword() {
           }).then(() => {
             alert('Mudança realizada com sucesso!')
             history.push('/');
-          }).catch(() => {
-            alert('Erro na mudança de senha!')
+          }).catch((data) => {
+            alert("Email incorreto, verifique novamente o e-mail inserido.")
           })
         }}
       >
+
+        <ArrowBackWrapper>
+          <Link to="/">
+            <img src={backIcon} alt="Voltar" />
+          </Link>
+        </ArrowBackWrapper>
+
         <HeaderWrapper>
           <h1>Olá, Informe os dados</h1>
         </HeaderWrapper>

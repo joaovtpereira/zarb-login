@@ -8,6 +8,13 @@ export const Container = styled.div`
   align-content: center;  
 `;
 
+export const ArrowBackWrapper = styled.div`
+  display: flex;
+  justify-content: flex-start;
+  width: 100%;
+  margin-bottom: 16px;  
+`;
+
 export const HeaderWrapper = styled.div`
   margin-bottom: 12px;
 `;
