@@ -1,19 +1,25 @@
 import React from 'react';
-import { BrowserRouter, Route } from 'react-router-dom';
+import { Router, Switch, Route } from 'react-router'
 
 import Login from '../Containers/Login';
 import Dashboard from '../Containers/Dashboard';
 import SignUp from '../Containers/SignUp';
 import ForgotPassword from '../Containers/ForgotPassword';
 
+import PrivateRoute from './privateRoute'
+
+import {history} from './history'
+
 function Routes() {
   return (
-    <BrowserRouter>
-      <Route path="/" exact component={Login}/>
-      <Route path="/sign-up" component={SignUp}/>
-      <Route path="/forgot-password" component={ForgotPassword}/>
-      <Route path="/dashboard" component={Dashboard}/>
-    </BrowserRouter>
+    <Router history={history}>
+      <Switch>
+        <Route path="/sign-up" exact component={SignUp}/>
+        <Route path="/forgot-password" exact component={ForgotPassword}/>
+        <PrivateRoute component={Dashboard} exact path="/"/>
+        <Route path="/login"exact  component={Login}/>
+      </Switch>
+    </Router>
   );
 }
 

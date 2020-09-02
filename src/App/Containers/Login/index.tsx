@@ -32,7 +32,8 @@ function Login() {
             password,
           }).then((data) => {
             alert('login realizado com sucesso!')
-            history.push('/dashboard');
+            localStorage.setItem('app-token', data.data.user.name)
+            history.push('/');
           }).catch(() => {
             alert('Email ou senha incorretos!')
           })

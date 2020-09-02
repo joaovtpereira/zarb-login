@@ -1,5 +1,7 @@
 import React from 'react';
 
+import { useHistory } from 'react-router-dom';
+
 import {
   Container,
   Header,
@@ -13,10 +15,18 @@ interface PageHeaderProps {
 }
 
 const PageHeader: React.FC<PageHeaderProps> = ({title, description}) => {
+  const history = useHistory();
+
   return (
     <Container>
       <Header>
-        <ButtonLink to="/">
+        <ButtonLink 
+          to="/" 
+          onClick={() => {
+            localStorage.removeItem('app-token')
+            history.push('/')
+          }}
+        >
           Sair
         </ButtonLink>
       </Header>
