@@ -16,7 +16,6 @@ import Button from '@material-ui/core/Button';
 
 import api from '../../Services/api';
 
-
 function Login() {
   const history = useHistory();
   const [email, setEmail] = useState('');
@@ -31,7 +30,7 @@ function Login() {
           api.post('session', {
             email,
             password,
-          }).then(() => {
+          }).then((data) => {
             alert('login realizado com sucesso!')
             history.push('/dashboard');
           }).catch(() => {
@@ -48,12 +47,14 @@ function Login() {
             id="outlined-basic"
             label="E-mail"
             variant="outlined"
+            type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
             fullWidth
           />
         </InputWrapper>
-
+        
         <InputWrapper>
           <TextField
             id="outlined-basic"
@@ -62,6 +63,7 @@ function Login() {
             type="password"
             value={password}
             onChange={(e) => setPassword(e.target.value)}
+            required
             fullWidth
           />
         </InputWrapper>

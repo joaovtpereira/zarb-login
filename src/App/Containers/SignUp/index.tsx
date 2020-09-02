@@ -21,6 +21,7 @@ import backIcon from '../../Images/back.svg';
 
 function SignUp() {
   const history = useHistory();
+  const [name, setName] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -30,6 +31,7 @@ function SignUp() {
         onSubmit={(e) => {
           e.preventDefault();
           api.post('users', {
+            name,
             email,
             password,
           }).then(() => {
@@ -53,10 +55,25 @@ function SignUp() {
         <InputWrapper>
           <TextField
             id="outlined-basic"
+            label="Nome"
+            variant="outlined"
+            value={name}
+            onChange={(e) => setName(e.target.value)}
+            required
+            type="text"
+            fullWidth
+          />
+        </InputWrapper>
+
+        <InputWrapper>
+          <TextField
+            id="outlined-basic"
             label="E-mail"
             variant="outlined"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
+            required
+            type="email"
             fullWidth
           />
         </InputWrapper>
@@ -68,6 +85,7 @@ function SignUp() {
             variant="outlined"
             type="password"
             value={password}
+            required
             onChange={(e) => setPassword(e.target.value)}
             fullWidth
           />

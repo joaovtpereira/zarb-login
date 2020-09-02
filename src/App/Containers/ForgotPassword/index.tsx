@@ -55,6 +55,8 @@ function ForgotPassword() {
           <TextField
             id="outlined-basic"
             label="E-mail"
+            type="email"
+            required
             variant="outlined"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
@@ -68,6 +70,7 @@ function ForgotPassword() {
             label="Nova senha"
             variant="outlined"
             type="password"
+            required
             value={password}
             onChange={(e) => setPassword(e.target.value)}
             fullWidth
